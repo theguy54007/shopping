@@ -19,6 +19,7 @@
 
   <%= f.label :image, "Photo"%>
   <%= image_tag @product.image, width:"300px" if @product.image?%>
+  <%= f.file_field :image%>
 
   <%= f.submit%>
 <%end%>
