@@ -1,14 +1,33 @@
 <h1>後臺</h1>
-<ul>
+<%= link_to "Create new product", new_admin_product_path%>
+<br>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Option</th>
+    </tr>
+  </thead>
   <% @products.each do |product|%>
-  <li>
-    <%= product.name%>
-    <%= link_to "Show", admin_product_path(product)%>
-    <%= link_to "Edit", edit_admin_product_path(product)%>
-    <%= link_to "Delete", admin_product_path(product), method: :delete, data:{confirm:"Are you sure?"}%>
-  </li>
+  <tbody>
+  <tr>
+    <td><%= product.id%></td>
+    <td><%= product.name%></td>
+    <td><%= product.image, width="100px"%></td>
+    <td><%= product.price%></td>
+    <td>
+      <%= link_to "Show", admin_product_path(product)%>
+      <%= link_to "Edit", edit_admin_product_path(product)%>
+      <%= link_to "Delete", admin_product_path(product), method: :delete, data:{confirm:"Are you sure?"}%>
+    </td>
+  </tr>
+</tbody>
   <%end%>
-  <%= link_to "New", new_admin_product_path%>
-</ul>
 
+</table>
+<div class="text-center">
 <%= paginate @products%>
+</div>
