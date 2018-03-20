@@ -1,1 +1,11 @@
-<%= 'Hello' %>
+<div>
+<%@products.each do|product|%>
+  <%= link_to product_path(product) do%>
+    <%= image_tag product.image%>
+    <%=product.name%>
+  <%end%>
+<%=product.price%>
+<%end%>
+</div>
+
+<%= paginate @products%>
