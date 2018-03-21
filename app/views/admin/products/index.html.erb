@@ -16,7 +16,7 @@
   <tr>
     <td><%= product.id%></td>
     <td><%= product.name%></td>
-    <td><%= product.image, width="100px"%></td>
+    <td><%= image_tag product.image, width:"100px"%></td>
     <td><%= product.price%></td>
     <td>
       <%= link_to "Show", admin_product_path(product)%>

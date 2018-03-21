@@ -22,14 +22,6 @@ def create
   end
 end
 
-def show
-
-end
-
-def edit
-
-end
-
 def update
   if @product.update(product_params)
     flash[:notice] = "Product was updated successfully!"
