@@ -1,14 +1,23 @@
-<div>
 <%@products.each do|product|%>
-<div class="col-md-2">
-  
-  <%= link_to product_path(product) do%>
-    <%= image_tag product.image%>
-    <%=product.name%>
+  <div class="product-box">
+    <%= link_to product_path(product) do%>
+      <%if product.image? %>
+        <%= image_tag product.image, class: "img-responsive center-block" %>
+      <% else %>
+        <%= image_tag "http://fakeimg.pl/200x200/FFFFBB/", width:200, height:200, class: "img-responsive center-block" %>
+      <% end %>
+      <%= image_tag product.image%>
+      <h3><%=product.name%></h3>
+    <%end%>
+    <%= truncate(product.description, length: 80)%><br>
+    <%=product.price%>
+  </div>
   <%end%>
-<%=product.price%>
-</div>
-<%end%>
-</div>
+  <br>
 
-<%= paginate @products%>
+
+<div class="container">
+  <div class="row">
+    <%= paginate @products%>
+  </div>
+</div>
