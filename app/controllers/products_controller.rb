@@ -20,26 +20,26 @@ def remove_from_cart
   cart_item = current_cart.cart_items.find_by(product_id: @product)
   cart_item.destroy
 
-  redirect_back(fallback_location: root_path)
+  #redirect_back(fallback_location: root_path)
 end
 
 def adjust_item
   @product = Product.find(params[:id])
   cart_item = current_cart.cart_items.find_by(product_id: @product)
 
-  if params[type:"add"]
+  if params[:type] == "add"
     cart_item.quantity += 1
-  elsif params[type:"subtract"]
+  elsif params[:type] == "subtract"
     cart_item.quantity -= 1
   end
 
   if cart_item.quantity == 0
     cart_item.destroy
   else
-    cart_item.save!
+    cart_item.save
   end
 
-  redirect_back(fallback_location: root_path)
+  #redirect_back(fallback_location: root_path)
 
 end
 
