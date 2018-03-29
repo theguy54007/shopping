@@ -1,11 +1,33 @@
+
+.product-page{
+  width:70%;
+  float: left;
+  border-right: 1px solid;
+
+}
+
+.product-page h1{
+  text-align: center;
+}
+
 .product-box{
   display: inline-block;
   padding: 5px 10px;
   border: 1px ;
   margin:10px;
-  width: 18%;
+  width: 14%;
 }
 
 .product-box h3 {
+  text-align: center;
+}
+
+.cart-page{
+  width:30%;
+  float: right;
+
+}
+
+.cart-page h1{
   text-align: center;
 }
