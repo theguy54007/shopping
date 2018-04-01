@@ -126,3 +126,40 @@
   float: right;
   margin-right: 20px;
 }
+
+.panel-body .table td {
+  vertical-align: middle;
+  font-size: 20px;
+  text-align: center;
+}
+
+.panel-body .table th {
+  font-size: 25px;
+  text-align: center;
+}
+
+
+.panel-body .subtotal {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: 400;
+}
+
+.panel-body .amount{
+  font-size: 35px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: 400;
+  margin-right: 50px;
+}
+
+
+.cart-subtotal .subtotal{
+  margin-bottom: 15px;
+}
+
+
+.cart-subtotal .subtotal .amount {
+  text-align: center;
+}
