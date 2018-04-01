@@ -1,6 +1,22 @@
-<%= @product.name%>
-<%= @product.image%>
-<%= @product.price%>
-<%= @product.description%>
+<div class="product-show">
+  <div class="product-show-image">
+    <%if @product.image? %>
+      <%= image_tag @product.image, class: "img-responsive " %>
+    <% else %>
+      <%= image_tag "http://fakeimg.pl/200x200/FFFFBB/", width:300, height:300, class: "img-responsive " %>
+    <% end %>
+  </div>
+  <div class="product-show-info">
+    <h2><%= @product.name%></h2>
+    <h3>$<%= @product.price%></h3><br>
+    <p><%= @product.description%></p><br>
+    <div class="add-to-cart-button">
+      <%=button_to "Add to Cart", add_to_cart_product_path(@product),remote: true, class:"btn btn-success"%>
+    </div>
+    <%= link_to "Back", products_path, class:"btn btn-default"%>
+  </div>
 
-<%= link_to "Back", products_path%>
+</div>
+<div class="cart-page">
+  <%= render partial: "shared/cart" %>
+</div>

@@ -5,17 +5,19 @@
   <%@products.each do|product|%>
     <div class="product-box">
       <%= link_to product_path(product) do%>
-        <%if product.image? %>
-          <%= image_tag product.image, class: "img-responsive center-block" %>
-        <% else %>
-          <%= image_tag "http://fakeimg.pl/200x200/FFFFBB/", width:200, height:200, class: "img-responsive center-block" %>
-        <% end %>
-        <%= image_tag product.image%>
+        <div class="product-box-img">
+          <%if product.image? %>
+            <%= image_tag product.image, class: "img-responsive center-block" %>
+          <% else %>
+            <%= image_tag "http://fakeimg.pl/200x200/FFFFBB/", class: "img-responsive center-block" %>
+          <% end %>
+        </div>
+
         <h3><%=product.name%></h3>
       <%end%>
-      <%= truncate(product.description, length: 80)%><br>
-      <%=product.price%>
-      <%=button_to "Add to Cart", add_to_cart_product_path(product),remote: true, class:"btn btn-success"%>
+      <p><%= truncate(product.description, length: 40)%></p>
+      <h4>$<%=product.price%></h4>
+      <%=button_to "Add to Cart", add_to_cart_product_path(product),remote: true, class:"btn btn-success btn-add"%>
     </div>
     <%end%>
     <br>

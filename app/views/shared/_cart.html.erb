@@ -10,4 +10,6 @@
   <p>Subtotal</p>
   <p class="amount"><%= current_cart.subtotal%></p>
 </div>
-<%= link_to "View Cart", cart_path%>
+<div class="view-cart">
+  <%= link_to "View Cart", cart_path, class:"btn btn-info"%>
+</div>
