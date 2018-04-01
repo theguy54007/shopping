@@ -4,7 +4,7 @@
   $('.product-<%= @product.id%>').remove();
 <%else%>
   $('.cart-<%= item.product.id%>-qty').text('<%= item.quantity%>');
-  $('.item-<%= item.product.id%>-total').text('<%= item.item_total%>');
+  $('.item-<%= item.product.id%>-total').text('$<%= item.item_total%>');
 <%end%>
 
 $('.amount').text('<%= current_cart.subtotal%>');
