@@ -1,8 +1,57 @@
 <% @orders.each do |order|%>
-  <%= order.name%>
-  <%= order.address%>
-  <%= order.phone%>
-  <%= order.shipping_status%>
-  <%= order.payment_status%>
-  <%= order.amount%>
+<div class="container order-item">
+  <div class="order-page">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h2 class="panel-title">Order# <%= order.sn%></h2>
+      </div>
+      <div class="order-page-item">
+        <div class="col-md-6 panel-warning">
+          <table class="table table-condensed">
+            <% order.order_items.each do |item| %>
+              <tr>
+                <td><%=item.product.name%></td>
+                <td></td>
+                <td><%=item.quantity%></td>
+                <td>$ <%=item.product.price%></td>
+              </tr>
+            <%end%>
+
+            <tr>
+              <td>Subtotal</td>
+              <td></td>
+              <td></td>
+              <td>$ <%=order.amount%></td>
+            </tr>
+          </table>
+          <div class="panel-warning">
+            <div class="panel-heading">
+              <h2 class="panel-title">Shipping Information</h2>
+            </div>
+            <div class="col-md-12">
+              <h4>NAME: <%= order.name%></h4>
+              <h4>PHONE: <%= order.phone%></h4>
+              <h4>ADDRESS: <%= order.address%></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="container-table">
+            <div class="container-table-cell">
+              <h3>Payment Status: <%= order.payment_status%></h3>
+              <h3>Shipping Status: <%= order.shipping_status%></h3>
+              <div class="order-button">
+                  <%= link_to "Credit", class:"btn btn-default"%>
+                  <%= link_to "Web ATM", class:"btn btn-default"%>
+                  <%= link_to "ATM", class:"btn btn-default"%>
+                  <%= link_to "Cancel", order_path(order), method: :delete, data:{confirm:" Are you sure?"}, class:"btn btn-danger" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
 <%end%>

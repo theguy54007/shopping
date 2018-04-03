@@ -157,3 +157,38 @@
 .cart-subtotal .subtotal .amount {
   text-align: center;
 }
+
+
+.order-page .panel-warning{
+  padding: 0px;
+  border-right: 1px solid transparent;
+  border-color: #ddd;
+}
+
+.order-item .table td{
+  text-align: left;
+}
+
+.order-item {
+  border: 1px solid transparent;
+  border-color: #ddd;
+  padding: 0px 0px 10px;
+  border-collapse: collapse;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.container-table{
+  display: table;
+  width: 100%;
+  height:100%;
+  position:relative;
+}
+
+.container-table-cell{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
