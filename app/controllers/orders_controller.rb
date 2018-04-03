@@ -4,9 +4,6 @@ class OrdersController < ApplicationController
       @orders = Order.all
   end
 
-
-
-
   def create
     if current_user.nil?
       session[:form_data] = params[:order]
@@ -16,7 +13,7 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       @order.shipping_status = "Not shipped!"
       @order.payment_status = "Not Paid!"
-      @order.sn = 1000 + Order.count
+      @order.sn = 1000 + Order.last.id
       @order.amount = 0
       @cart_items = current_cart.cart_items.all
       if @order.save
@@ -33,6 +30,16 @@ class OrdersController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path
+    flash[:alert] = "Your order was canceled!"
+  end
+
+
+
 
   private
 
