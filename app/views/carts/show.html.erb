@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="panel panel-default">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h2 class="panel-title">Shopping List</h2>
       </div>
-      
         <table class="table table-hover">
           <tr>
             <th></th>
@@ -47,8 +46,29 @@
             <td></td>
           </tr>
         </table>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title">Shipping Information</h2>
+      </div>
+      <div class="panel-body">
+        <%= form_for @order do |f|%>
+          <div class="form-group">
+            <%= f.label :name, "Name"%>
+            <%= f.text_field :name, class: "form-control"%>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone, "Phone"%>
+            <%= f.text_field :phone, class: "form-control"%>
+          </div>
+          <div class="form-group">
+            <%= f.label :address, "Address"%>
+            <%= f.text_field :address, class: "form-control"%>
+          </div>
 
-
+          <%= f.submit "Checkout", class:"btn btn-primary"%>
+        <%end%>
+      </div>
     </div>
   </div>
 </div>
