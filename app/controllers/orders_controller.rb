@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-      @orders = Order.all
+      @orders = current_user.orders.order(created_at: :desc)
   end
 
   def create
@@ -24,7 +24,11 @@ class OrdersController < ApplicationController
         end
         @order.save!
         session[:cart_id] = nil
+        session[:form_data] = nil
+        UserMailer.notify_order_create(@order).deliver_now!
         redirect_to orders_path
+
+
       else
         render "carts/show.html.erb"
       end
