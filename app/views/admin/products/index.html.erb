@@ -1,4 +1,10 @@
 <div class="container">
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><%= link_to "Product", admin_products_path%></a></li>
+    <li role="presentation"><%= link_to "Order", admin_orders_path%></li>
+  </ul>
+  <br>
+
   <div class="row">
     <%= link_to "Create new product", new_admin_product_path%>
     <br>
