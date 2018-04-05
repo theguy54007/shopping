@@ -4,6 +4,16 @@ class Order < ApplicationRecord
 
   belongs_to :user
 
-  validates_presence_of :name, :phone, :address 
+  validates_presence_of :name, :phone, :address
+
+  PAYMENT_STATUS =[
+    ["Not paid!", :Not_Paid!],
+    ["Paid!", :Paid]
+  ]
+
+  SHIPPING_STATUS =[
+    ["Not shipped!", :Not_Shipped!],
+    ["Shipped!", :Shipped]
+  ]
 
 end

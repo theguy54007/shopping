@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :orders
 
   namespace :admin do
+    resources :orders
     resources :products
     root "products#index"
   end

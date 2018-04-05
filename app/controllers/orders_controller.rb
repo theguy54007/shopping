@@ -11,8 +11,8 @@ class OrdersController < ApplicationController
     else
       @order = Order.new(order_params)
       @order.user_id = current_user.id
-      @order.shipping_status = "Not shipped!"
-      @order.payment_status = "Not Paid!"
+      @order.shipping_status = "Not_Shipped!"
+      @order.payment_status = "Not_Paid!"
       @order.sn = 1000 + Order.last.id
       @order.amount = 0
       @cart_items = current_cart.cart_items.all
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
-    if @order.shipping_status == "Not shipped!"
+    if @order.shipping_status == "Not_Shipped!"
       @order.destroy
       redirect_to orders_path
       flash[:alert] = "Your order was canceled!"

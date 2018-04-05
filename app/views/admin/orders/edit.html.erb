@@ -1,0 +1,54 @@
+
+<div class="container order-item">
+  <div class="order-page">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h2 class="panel-title">Order# <%= @order.sn%></h2>
+      </div>
+      <div class="order-page-item">
+        <div class="col-md-6 panel-warning">
+          <table class="table table-condensed">
+            <% @order.order_items.each do |item| %>
+              <tr>
+                <td><%=item.product.name%></td>
+                <td></td>
+                <td><%=item.quantity%></td>
+                <td>$ <%=item.product.price%></td>
+              </tr>
+            <%end%>
+
+            <tr>
+              <td>Subtotal</td>
+              <td></td>
+              <td></td>
+              <td>$ <%=@order.amount%></td>
+            </tr>
+          </table>
+          <div class="panel-warning">
+            <div class="panel-heading">
+              <h2 class="panel-title">Shipping Information</h2>
+            </div>
+            <div class="col-md-12">
+              <h4>NAME: <%= @order.name%></h4>
+              <h4>PHONE: <%= @order.phone%></h4>
+              <h4>ADDRESS: <%= @order.address%></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="container-table">
+            <div class="container-table-cell">
+              <%= form_for [:admin, @order] do |f| %>
+              <h3>Payment Status: <%= f.select :payment_status, Order::PAYMENT_STATUS %></h3>
+              <h3>Shipping Status: <%= f.select :shipping_status, Order::SHIPPING_STATUS%></h3>
+              <div class="order-button">
+                  <%= f.submit class:"btn btn-success"%>
+              </div>
+              <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
