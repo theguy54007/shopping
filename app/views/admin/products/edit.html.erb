@@ -1,25 +1,38 @@
-<%if @product.errors.any?%>
-  <h2>We have some errors here!</h2>
-  <ul>
-    <%= @product.errors.full_messages do |msg|%>
-      <li><%= msg %></li>
+<div class="form container">
+  <div class="row">
+    <%if @product.errors.any?%>
+      <h2>We have some errors here!</h2>
+      <ul>
+        <%= @product.errors.full_messages do |msg|%>
+          <li><%= msg %></li>
+        <%end%>
+      </ul>
     <%end%>
-  </ul>
-<%end%>
+    <%= form_for [:admin, @product] do |f|%>
+      <div class="form-group">
+        <%= f.label :name, "Name"%>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, "Photo"%>
+          <%if @product.image? %>
+            <%= image_tag @product.image, class: "img-responsive " %>
+          <% else %>
+            <%= image_tag "http://fakeimg.pl/250x250/FFFFBB/", width:250, height:250, class: "img-responsive " %>
+          <% end %>
+          <br>
+          <%= f.file_field :image, class: "btn btn-default "%>
 
-<%= form_for [:admin, @product] do |f|%>
-  <%= f.label :name, "Name"%>
-  <%= f.text_field :name%>
-
-  <%= f.label :description, "Description"%>
-  <%= f.text_field :description%>
-
-  <%= f.label :price, "Price"%>
-  <%= f.text_field :price%>
-
-  <%= f.label :image, "Photo"%>
-  <%= image_tag @product.image, width:"300px" if @product.image?%>
-  <%= f.file_field :image%>
-
-  <%= f.submit%>
-<%end%>
+      </div>
+      <div class="form-group">
+        <%= f.label :description, "Description"%>
+        <%= f.text_area :description, class: "form-control",rows:"7"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :price, "Price"%>
+        <%= f.text_field :price, class: "form-control"%>
+      </div>
+      <%= f.submit "Update",class: "btn btn-default "%>
+    <%end%>
+  </div>
+</div>

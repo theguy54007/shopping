@@ -15,21 +15,25 @@
         <%= f.text_field :name, class: "form-control"%>
       </div>
       <div class="form-group">
+        <%= f.label :image, "Photo"%>
+          <%if @product.image? %>
+            <%= image_tag @product.image, class: "img-responsive " %>
+          <% else %>
+            <%= image_tag "http://fakeimg.pl/250x250/FFFFBB/", width:250, height:250, class: "img-responsive " %>
+          <% end %>
+          <br>
+          <%= f.file_field :image, class: "btn btn-default "%>
+
+      </div>
+      <div class="form-group">
         <%= f.label :description, "Description"%>
-        <%= f.text_field :description, class: "form-control"%>
+        <%= f.text_area :description, class: "form-control",rows:"7"%>
       </div>
       <div class="form-group">
         <%= f.label :price, "Price"%>
         <%= f.text_field :price, class: "form-control"%>
       </div>
-      <div class="form-group">
-        <%= f.label :image, "Photo"%>
-        <%= image_tag @product.image, width:"300px" if @product.image?%>
-        <%= f.file_field :image, class: "form-control"%>
-      </div>
-
-
-      <%= f.submit%>
+      <%= f.submit "Create",class: "btn btn-default "%>
     <%end%>
   </div>
 </div>

@@ -1,9 +1,9 @@
 
 .product-page{
-  width:75%;
+  width:80%;
   float: left;
   border-right: 1px solid;
-  margin-left: 20px;
+
 }
 
 .product-page h1{
@@ -191,4 +191,14 @@
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+}
+
+
+
+
+.table-admin{
+  font-size: 20px;
+  vertical-align: middle;
+  width: 70%;
+  margin: 0 auto;
 }
