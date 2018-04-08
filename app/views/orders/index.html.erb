@@ -42,12 +42,13 @@
               <h3>Shipping Status: <%= order.shipping_status%></h3>
               <div class="order-button">
                   <% if order.payment_status == "Not_Paid!"%>
-                    <%= link_to "Pay Now", checkout_spgateway_order_path(order), method: :post, class:"btn btn-success"%>
+                    <% Payment::PAYMENT_METHODS.each do |method| %>
+                      <%= link_to method, checkout_spgateway_order_path(order, payment_method: method), method: :post, class: "btn btn-success" %>
+                    <%end%>
                   <%end%>
-                  <%= link_to "Credit", class:"btn btn-default"%>
-                  <%= link_to "Web ATM", class:"btn btn-default"%>
-                  <%= link_to "ATM", class:"btn btn-default"%>
-                  <%= link_to "Cancel", order_path(order), method: :delete, data:{confirm:" Are you sure?"}, class:"btn btn-danger" %>
+                  <% if order.shipping_status == "Not_Shipped!"%>
+                    <%= link_to "Cancel", order_path(order), method: :delete, data:{confirm:" Are you sure?"}, class:"btn btn-danger" %>
+                  <%end%>
               </div>
             </div>
           </div>
