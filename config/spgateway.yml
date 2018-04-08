@@ -1,0 +1,17 @@
+default: &default
+  merchant_id: MS33635417
+  hash_key: UPrD0gCLARhKc2XP3H2GR8GC7ctD62pL
+  hash_iv: TB4a4Ti2zEdfBt6C
+  url: https://ccore.spgateway.com/MPG/mpg_gateway
+
+development:
+  <<: *default
+
+staging:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

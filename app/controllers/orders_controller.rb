@@ -47,6 +47,28 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout_spgateway
+    @order = current_user.orders.find(params[:id])
+    if @order.payment_status != "Not_Paid!"
+      flash[:alert] = "Order has been paid."
+      redirect_to orders_path
+    else
+      @payment = Payment.create!(
+        sn: Time.now.to_i,
+        order_id: @order.id,
+        amount: @order.amount
+      )
+
+      spgateway_data = Spgateway.new(@payment).generate_form_data(spgateway_return_url)
+
+      @merchant_id = spgateway_data[:MerchantID]
+      @trade_info = spgateway_data[:TradeInfo]
+      @trade_sha = spgateway_data[:TradeSha]
+      @version = spgateway_data[:Version]
+      
+      render layout:false
+    end
+  end
 
 
 

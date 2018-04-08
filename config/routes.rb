@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
 
   resource :cart
-  resources :orders
+  resources :orders do
+    post :checkout_spgateway, on: :member
+  end
 
   namespace :admin do
     resources :orders
@@ -19,8 +21,7 @@ Rails.application.routes.draw do
     root "products#index"
   end
 
-
-
+post 'spgateway/return'
 
 
 
