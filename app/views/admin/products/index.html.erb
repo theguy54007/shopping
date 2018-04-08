@@ -25,7 +25,7 @@
         <td><%= product.name%></td>
         <td>
           <%if product.image? %>
-            <%= image_tag product.image, class: "img-responsive " %>
+            <%= image_tag product.image, width:50, height:30, class: "img-responsive " %>
           <% else %>
             <%= image_tag "http://fakeimg.pl/50x30/FFFFBB/", width:50, height:30, class: "img-responsive " %>
           <% end %>
