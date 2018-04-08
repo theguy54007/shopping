@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
 post 'spgateway/return'
+post "spgateway/notify"
 
 
 
