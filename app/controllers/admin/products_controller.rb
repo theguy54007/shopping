@@ -3,7 +3,7 @@ before_action :authenticate_admin
 before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 def index
-  @products = Product.page(params[:page]).per(10)
+  @products = Product.page(params[:page]).per(10).order(created_at: :desc)
 end
 
 
