@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  has_many :comments, dependent: :restrict_with_error
+
   has_many :orders
 
   def admin?
