@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post :add_to_cart, on: :member
     post :remove_from_cart, on: :member
     post :adjust_item, on: :member
+    resources :comments, only: [:index, :create, :destroy]
   end
 
   resource :cart
