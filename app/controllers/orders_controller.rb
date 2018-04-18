@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       @order.shipping_status = "Not_Shipped!"
       @order.payment_status = "Not_Paid!"
-      @order.sn = 1000 + Order.last.id
+      @order.sn = 1000 + Time.now.to_i
       @order.amount = 0
       @cart_items = current_cart.cart_items.all
       if @order.save
