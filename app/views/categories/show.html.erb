@@ -1,0 +1,61 @@
+<div class="product-page"
+<% if @items.empty? %>
+style="width: 100%"
+<% end %>
+>
+<div class="container">
+  <h1>Product</h1>
+    <ul class="nav nav-pills nav-pills-center" >
+      <li role="presentation"><%= link_to "全部餐廳", root_path %></li>
+      <% @categories.each do |category| %>
+        <li role="presentation" class=" <%= "active" if category == @category %>" ><%= link_to category.name, category_path(category) %></li>
+      <% end %>
+    </ul>
+    <div class="dropdown" >
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">選擇排序<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to "價格由低->高", category_path(@category, type:"low")%></li>
+        <li><%= link_to "價格由高->低", category_path(@category, type:"high")%></li>
+        <li><%= link_to "新->舊", category_path(@category, type:"new")%></li>
+        <li><%= link_to "舊->新", category_path(@category, type:"old")%></li>
+        <li><%= link_to "隨機", category_path(@category, type:"random")%></li>
+      </ul>
+    </div>
+    <br>
+    <div class="clearfix"></div>
+    <br>
+    <br>
+    <% @products.each do|product|%>
+      <div class="product-box">
+        <%= link_to product_path(product) do%>
+          <div class="product-box-img">
+            <%if product.image? %>
+              <%= image_tag product.image, class: "img-responsive center-block" %>
+            <% else %>
+              <%= image_tag "http://fakeimg.pl/200x200/FFFFBB/", class: "img-responsive center-block" %>
+            <% end %>
+          </div>
+
+          <h3><%=product.name%></h3>
+        <%end%>
+        <p><%= truncate(product.description, length: 40)%></p>
+        <h4>$<%=product.price%></h4>
+        <%=button_to "Add to Cart", add_to_cart_product_path(product),remote: true, class:"btn btn-success btn-add"%>
+      </div>
+    <%end%>
+      <br>
+    <div class="container">
+      <div class="row">
+        <%= paginate @products%>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @items.empty? %>
+  <div class="cart-page" style="width: 0%"></div>
+<% else %>
+  <div class="cart-page">
+      <%= render partial: "shared/cart" %>
+  </div>
+<% end %>

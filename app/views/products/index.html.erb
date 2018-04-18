@@ -6,8 +6,29 @@ style="width: 100%"
 >
   <div class="container">
     <h1>Product</h1>
+    
+    <ul class="nav nav-pills nav-pills-center" >
+      <li role="presentation" class="active"><%= link_to "全部餐廳", root_path %></li>
+      <% @categories.each do |category| %>
+        <li role="presentation" class=" <%= "active" if category == @category %>" ><%= link_to category.name, category_path(category) %></li>
+      <% end %>
+    </ul>
+    <div class="dropdown" >
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">選擇排序<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to "價格由低->高", products_path(@products, type:"low")%></li>
+        <li><%= link_to "價格由高->低", products_path(@products, type:"high")%></li>
+        <li><%= link_to "新->舊", products_path(@products, type:"new")%></li>
+        <li><%= link_to "舊->新", products_path(@products, type:"old")%></li>
+        <li><%= link_to "隨機", products_path(@products, type:"random")%></li>
+      </ul>
+    </div>
+    <br>
+    <div class="clearfix"></div>
     <br>
     <%@products.each do|product|%>
+    
       <div class="product-box">
         <%= link_to product_path(product) do%>
           <div class="product-box-img">
