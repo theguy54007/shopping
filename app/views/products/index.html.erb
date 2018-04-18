@@ -32,11 +32,11 @@ style="width: 100%"
       <div class="product-box">
         <%= link_to product_path(product) do%>
           <div class="product-box-img">
-            <%if product.image? %>
-              <%= image_tag product.image, class: "img-responsive center-block" %>
-            <% else %>
-              <%= image_tag "http://fakeimg.pl/200x200/FFFFBB/", class: "img-responsive center-block" %>
-            <% end %>
+            <% for id in 0..9 %>
+              <% if image_path(product.image).include?('/'+id.to_s+'.jpg') %>
+                <%= image_tag('/seed_img/'+id.to_s+'.jpg', class: "img-responsive center-block") %>
+              <% end %>
+            <%end%>
           </div>
 
           <h3><%=product.name%></h3>

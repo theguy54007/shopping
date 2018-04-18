@@ -27,11 +27,11 @@
         <td><%= product.name%></td>
         <td><%= product.category.name %></td>
         <td>
-          <%if product.image? %>
-            <%= image_tag product.image, width:50, height:30, class: "img-responsive " %>
-          <% else %>
-            <%= image_tag "http://fakeimg.pl/50x30/FFFFBB/", width:50, height:30, class: "img-responsive " %>
-          <% end %>
+          <% for id in 0..9 %>
+            <% if image_path(product.image).include?('/'+id.to_s+'.jpg') %>
+              <%= image_tag('/seed_img/'+id.to_s+'.jpg', width:50, height:30, class: "img-responsive ") %>
+            <% end %>
+          <%end%>    
         </td>
         <td><%= product.price%></td>
         <td>

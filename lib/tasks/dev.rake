@@ -7,7 +7,7 @@ namespace :dev do
       name: FFaker::Name.first_name,
       description: FFaker::Lorem.paragraph,
       price: (rand(500)+1) * 10,
-      image: FFaker::Avatar.image,
+      image: File.open("#{Rails.root}/public/seed_img/#{rand(0..9)}.jpg"),
       category: Category.all.sample
       )
     end

@@ -6,11 +6,12 @@ style="width: 100%"
   <div class="container">
     <div class="product-info">
       <div class="product-show-image">
-        <%if @product.image? %>
-          <%= image_tag @product.image, class: "img-responsive " %>
-        <% else %>
-          <%= image_tag "http://fakeimg.pl/200x200/FFFFBB/", width:300, height:300, class: "img-responsive " %>
-        <% end %>
+        <% for id in 0..9 %>
+          <% if image_path(@product.image).include?('/'+id.to_s+'.jpg') %>
+            <%= image_tag('/seed_img/'+id.to_s+'.jpg', width:300, height:300,class: "img-responsive center-block") %>
+          <% end %>
+        <%end%>
+        
       </div>
       <div class="product-show-info">
         <h2><%= @product.name%></h2>
