@@ -11,7 +11,7 @@ Devise.setup do |config|
   # config.secret_key = '7ad523e7d282424d90cfe5c43af33c3703ec51b6097962f829b73c448ae3d5ba676d8596465509a2a1fc9a1fcdb6cef8251eb815b666f3d589b5b063df826409'
   fb_config = Rails.application.config_for(:facebook)
 
-    config.omniauth :facebook, fb_config["app_id"], fb_config["secret"], scope: "public_profile,email", info_fields: "email,name", callback_url: "https://localhost:3000/users/auth/facebook/callback"
+    config.omniauth :facebook, fb_config["app_id"], fb_config["secret"], scope: "public_profile,email", info_fields: "email,name", callback_url: "https://shopping-store-online.herokuapp.com/users/auth/facebook/callback"
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
