@@ -1,4 +1,8 @@
-<div class="product-show">
+<div class="product-show"
+<% if @items.empty? %>
+style="width: 100%"
+<% end %>
+>
   <div class="container">
     <div class="product-info">
       <div class="product-show-image">
@@ -52,6 +56,10 @@
 
   </div>
 </div>
-<div class="cart-page">
-  <%= render partial: "shared/cart" %>
-</div>
+<% if @items.empty? %>
+  <div class="cart-page" style="width: 0%"></div>
+<% else %>
+  <div class="cart-page">
+      <%= render partial: "shared/cart" %>
+  </div>
+<% end %>

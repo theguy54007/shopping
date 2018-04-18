@@ -8,3 +8,10 @@
 <%end%>
 
 $('.amount').text('<%= current_cart.subtotal%>');
+<% if current_cart.cart_items.empty?%>
+$('.cart-page').html(' ');
+$('.cart-page').css('width', '0%');
+$('.product-page').css('width', '100%');
+$('.product-page').css('border-right', 'none');
+$('.product-show').css('width', '100%');
+<%end%>
