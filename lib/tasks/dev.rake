@@ -33,7 +33,7 @@ namespace :dev do
       puts "now you have #{Product.count} products data"
   end
 
-
+  
 
 
 
