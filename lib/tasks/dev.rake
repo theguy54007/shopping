@@ -1,39 +1,30 @@
 namespace :dev do
   task fake_product: :environment do
     Product.delete_all
-
+    Order.delete_all
     1000.times do
       Product.create(
       name: FFaker::Name.first_name,
       description: FFaker::Lorem.paragraph,
       price: (rand(500)+1) * 10,
-      image: FFaker::Avatar.image
+      image: FFaker::Avatar.image,
+      category: Category.all.sample
       )
     end
     puts "Have created #{Product.count} products!"
   end
 
-  task fake_product_image: :environment do
 
-    url = "https://uinames.com/api/?ext&region=england"
 
-    100.times do
-      response = RestClient.get(url)
-      data = JSON.parse(response.body)
-
-      product = Product.create!(
-        name: data["name"],
-        description: FFaker::Lorem.paragraph,
-        price: (rand(500)+1) * 10,
-        image: data["photo"]
+  task add_category: :environment do
+    Product.all.each do |product|
+      product.category_id.create!(
+      category_id: Category.all.sample,
       )
-      puts "created user #{product.name}"
     end
-
-      puts "now you have #{Product.count} products data"
+    puts "Add category to all Product"
   end
 
-  
 
 
 

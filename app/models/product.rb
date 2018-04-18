@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   mount_uploader :image, PhotoUploader
   validates_presence_of :name, :price
 
-  belongs_to :catergory, optional: true
+  belongs_to :category, optional: true
 
   has_many :cart_items, dependent: :destroy
   has_many :carts, through: :cart_items

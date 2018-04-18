@@ -4,6 +4,7 @@ before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 def index
   @products = Product.page(params[:page]).per(10).order(created_at: :desc)
+  @categories = Category.all
 end
 
 
@@ -47,7 +48,7 @@ def set_product
 end
 
 def product_params
-  params.require(:product).permit(:name, :price, :description, :image)
+  params.require(:product).permit(:name, :price, :description, :image, :category_id)
 end
 
 

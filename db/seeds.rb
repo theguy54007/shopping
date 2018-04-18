@@ -15,18 +15,18 @@ puts "Default admin created"
 #category created
 Category.destroy_all
 
-category_list = [
+category_list =[
   {name: "3C"},
   {name: "食品"},
+  {name: "清潔"},
+  {name: "服飾"},
   {name: "傢俱"},
   {name: "書籍"},
   {name: "廚房"},
-  {name: "生活"},
-  {name: "清潔"},
-  {name: "服飾"}
 ]
 
 category_list.each do |category|
-  Category.create(name: category[:name])
+  Category.create( name: category[:name] )
+  puts "#{Category.name} created!"
 end
-puts "Now you have #{Category.count} categories!"
+puts "Catergory created!"

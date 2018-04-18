@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :categories, only: :show
   root "products#index"
 
   resources :products, only: [:index, :show] do
@@ -16,9 +17,11 @@ Rails.application.routes.draw do
     post :checkout_spgateway, on: :member
   end
 
+
   namespace :admin do
     resources :orders
     resources :products
+    resources :categories
     root "products#index"
   end
 

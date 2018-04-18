@@ -2,6 +2,7 @@
   <ul class="nav nav-tabs">
     <li role="presentation" class="active"><%= link_to "Product", admin_products_path%></a></li>
     <li role="presentation"><%= link_to "Order", admin_orders_path%></li>
+    <li role="presentation"><%= link_to "Category", admin_categories_path%></li>
   </ul>
   <br>
 
@@ -13,6 +14,7 @@
         <tr>
           <th>No</th>
           <th>Name</th>
+          <th>Category</th>
           <th>Image</th>
           <th>Price</th>
           <th colspan="2">Option</th>
@@ -23,6 +25,7 @@
       <tr>
         <td><%= product.id%></td>
         <td><%= product.name%></td>
+        <td><%= product.category.name %></td>
         <td>
           <%if product.image? %>
             <%= image_tag product.image, width:50, height:30, class: "img-responsive " %>
