@@ -1,8 +1,8 @@
 namespace :dev do
   task fake_product: :environment do
     Product.delete_all
-    Order.delete_all
-    1000.times do
+    
+    100.times do
       Product.create(
       name: FFaker::Name.first_name,
       description: FFaker::Lorem.paragraph,
