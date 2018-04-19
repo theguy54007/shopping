@@ -74,7 +74,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: "https://my-shopping-website.herokuapp.com/" }
+  config.action_mailer.default_url_options = { host: "https://shopping-store-online.herokuapp.com/" }
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => 'smtp.gmail.com',
