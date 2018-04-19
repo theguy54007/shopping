@@ -84,7 +84,7 @@ Rails.application.configure do
     :user_name => 'sage.tommy920126@gmail.com',
     :password => '920126tommy'
 
-
+}
 
 
 
