@@ -73,20 +73,16 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'https://shopping-store-online.herokuapp.com/' }  
-  config.action_mailer.delivery_method = :smtp  
-  config.action_mailer.perform_deliveries = true  
-  config.action_mailer.raise_delivery_errors = false  
-  config.action_mailer.default :charset => "utf-8"  
-  config.action_mailer.smtp_settings = {  
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: "myapp.herokuapp.com",
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: ENV["sage.tommy920126@gmail.com"],
-  password: ENV["920126tommy"]
-}
+ config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: "https://my-shopping-website.herokuapp.com/" }
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :plain,
+    :domain => 'gmail.com',
+    :user_name => 'sage.tommy920126@gmail.com',
+    :password => '920126tommy'
 
 
 
