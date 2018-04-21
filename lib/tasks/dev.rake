@@ -56,7 +56,8 @@ task fake_user: :environment do
   end
 
   task delete_order: :environment do
-    Order.where(user_id: nil).delete_all
+    Order.delete_all
+    puts "you have delete order"
   end
 
 
