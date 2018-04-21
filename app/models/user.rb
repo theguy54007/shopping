@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :restrict_with_error
 
-  has_many :orders
+  has_many :orders, dependent: :destroy
 
   def admin?
     self.role == "admin"
