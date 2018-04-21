@@ -2,10 +2,10 @@
 <% if item %>
   $('.item-list').append('<%= j render partial: "shared/item", locals: { item: item}%>');
   $('.cart-page').html('<%= j render partial: "shared/cart" %>');
-  $('.cart-page').css('width', '18%');
-  $('.product-page').css('width', '80%');
+  $('.cart-page').css('width', '21%');
+  $('.product-page').css('width', '72%');
   $('.product-page').css('border-right', '1px solid');
-  $('.product-show').css('width', '80%');
+  $('.product-show').css('width', '72%');
 <%else%>
   <%if item.quantity == 1 %>
     $('.item-list').append('<%= j render partial: "shared/item", locals: { item: item}%>');

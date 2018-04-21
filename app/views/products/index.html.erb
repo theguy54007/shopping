@@ -1,11 +1,13 @@
 
-<div class="product-page"
+<div class="product-page container"
 <% if @items.empty? %>
 style="width: 100%"
 <% end %>
 >
-  <div class="container">
-    <h1>Product</h1>
+  <div class="row">
+    
+  
+      <h1>Product</h1>
     
     <ul class="nav nav-pills nav-pills-center" >
       <li role="presentation" class="active"><%= link_to "全部餐廳", root_path %></li>
@@ -29,7 +31,7 @@ style="width: 100%"
     <br>
     <%@products.each do|product|%>
     
-      <div class="product-box">
+      <div class="product-box ">
         <%= link_to product_path(product) do%>
           <div class="product-box-img">
             <% for id in 0..9 %>
@@ -41,7 +43,7 @@ style="width: 100%"
 
           <h3><%=product.name%></h3>
         <%end%>
-        <p><%= truncate(product.description, length: 40)%></p>
+        <p><%= truncate(product.description, length: 30)%></p>
         <h4>$<%=product.price%></h4>
         <%=button_to "Add to Cart", add_to_cart_product_path(product),remote: true, class:"btn btn-success btn-add"%>
       </div>
@@ -52,12 +54,16 @@ style="width: 100%"
         <%= paginate @products%>
       </div>
     </div>
+    
   </div>
 </div>
 <% if @items.empty? %>
   <div class="cart-page" style="width: 0%"></div>
 <% else %>
-  <div class="cart-page">
+  <div class="cart-page ">
+    
       <%= render partial: "shared/cart" %>
+    
+      
   </div>
 <% end %>

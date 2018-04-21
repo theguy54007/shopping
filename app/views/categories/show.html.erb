@@ -1,9 +1,9 @@
-<div class="product-page"
+<div class="product-page container"
 <% if @items.empty? %>
 style="width: 100%"
 <% end %>
 >
-<div class="container">
+
   <h1>Product</h1>
     <ul class="nav nav-pills nav-pills-center" >
       <li role="presentation"><%= link_to "全部餐廳", root_path %></li>
@@ -50,7 +50,7 @@ style="width: 100%"
         <%= paginate @products%>
       </div>
     </div>
-  </div>
+  
 </div>
 <% if @items.empty? %>
   <div class="cart-page" style="width: 0%"></div>

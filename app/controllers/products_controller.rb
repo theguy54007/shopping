@@ -1,17 +1,17 @@
 class ProductsController < ApplicationController
 
 def index
-  @products = Product.page(params[:page]).per(10)
+  @products = Product.page(params[:page]).per(12)
   if params[:type] == "high"
-    @products = Product.page(params[:page]).per(10).order(price: :desc) 
+    @products = Product.page(params[:page]).per(12).order(price: :desc) 
   elsif params[:type] == "low"
-    @products = Product.page(params[:page]).per(10).order(price: :asc)
+    @products = Product.page(params[:page]).per(12).order(price: :asc)
   elsif params[:type] == "old"
-    @products = Product.page(params[:page]).per(10).order(created_at: :asc)
+    @products = Product.page(params[:page]).per(12).order(created_at: :asc)
   elsif params[:type] == "new"
-    @products = Product.page(params[:page]).per(10).order(created_at: :desc)
+    @products = Product.page(params[:page]).per(12).order(created_at: :desc)
   elsif params[:type] == "random"
-    @products = Product.page(params[:page]).per(10)
+    @products = Product.page(params[:page]).per(12)
   end
   @items = current_cart.cart_items
   @categories = Category.all
