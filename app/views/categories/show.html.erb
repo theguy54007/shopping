@@ -39,7 +39,7 @@ style="width: 100%"
 
           <h3><%=product.name%></h3>
         <%end%>
-        <p><%= truncate(product.description, length: 40)%></p>
+        <p><%= truncate(product.description, length: 30)%></p>
         <h4>$<%=product.price%></h4>
         <%=button_to "Add to Cart", add_to_cart_product_path(product),remote: true, class:"btn btn-success btn-add"%>
       </div>
