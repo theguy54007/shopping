@@ -1,0 +1,39 @@
+<div class="form container">
+  <div class="row">
+    <%if @product.errors.any?%>
+      <h2>We have some errors here!</h2>
+      <ul>
+        <%= @product.errors.full_messages do |msg|%>
+          <li><%= msg %></li>
+        <%end%>
+      </ul>
+    <%end%>
+    <%= form_for [:admin, @product] do |f|%>
+      <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+      <div class="form-group">
+        <%= f.label :name, "Name"%>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, "Photo"%>
+          <% for id in 0..9 %>
+            <% if image_path(@product.image).include?('/'+id.to_s+'.jpg') %>
+              <%= image_tag('/seed_img/'+id.to_s+'.jpg', width:250, height:250, class: "img-responsive ") %>
+            <% end %>
+          <%end%> 
+          <br>
+          <%= f.file_field :image, class: "btn btn-default "%>
+
+      </div>
+      <div class="form-group">
+        <%= f.label :description, "Description"%>
+        <%= f.text_area :description, class: "form-control",rows:"7"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :price, "Price"%>
+        <%= f.text_field :price, class: "form-control"%>
+      </div>
+      <%= f.submit "Update",class: "btn btn-default "%>
+    <%end%>
+  </div>
+</div>
