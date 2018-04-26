@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
   def show
     @categories = Category.all
-    @category = Category.find(params[:id])
+    @category = Category.includes(:products).find(params[:id])
     @products = @category.products.page(params[:page]).per(12)
     if params[:type] == "high"
     @products = @products.order(price: :desc) 

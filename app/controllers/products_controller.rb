@@ -18,20 +18,20 @@ def index
 end
 
 def show
-  @product = Product.find(params[:id])
+  @product = Product.includes(:comments).find(params[:id])
   @comment = Comment.new
   @items = current_cart.cart_items
 end
 
 def add_to_cart
-  @product = Product.find(params[:id])
+  @product = Product.includes(:cart_items).find(params[:id])
   current_cart.add_cart_item(@product)
 
   #redirect_to root_path
 end
 
 def remove_from_cart
-  @product = Product.find(params[:id])
+  @product = Product.includes(:cart_items).find(params[:id])
   cart_item = current_cart.cart_items.find_by(product_id: @product)
   cart_item.destroy
 
@@ -39,7 +39,7 @@ def remove_from_cart
 end
 
 def adjust_item
-  @product = Product.find(params[:id])
+  @product = Product.includes(:cart_items).find(params[:id])
   cart_item = current_cart.cart_items.find_by(product_id: @product)
 
   if params[:type] == "add"
