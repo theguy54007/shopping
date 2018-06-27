@@ -11,3 +11,6 @@
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 action_mailer_user_name: "sage.tommy920126@gmail.com"
 action_mailer_password: "Tommy920126"
+
+app_id: 160007191486421
+secret: afbbd9d960ae9e9c2a743da9eac78ac9
